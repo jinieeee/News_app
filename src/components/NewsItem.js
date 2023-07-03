@@ -32,6 +32,7 @@ const NewsItemBlock = styled.div`
 
 const NewsItem = ({ article }) => {
     const {title, description, url, urlToImage} = article;
+    console.log(article);
     return (
         <NewsItemBlock>
             {urlToImage && (
@@ -43,7 +44,7 @@ const NewsItem = ({ article }) => {
             )}
             <div className='contents'>
                 <h2>
-                    <a href={url} target='_blank' rel='noopener noreferrer'>
+                    <a href={url} target='_blank' rel='noopener noreferrer'>4
                         {title}
                     </a>
                 </h2>

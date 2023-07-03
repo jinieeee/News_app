@@ -4,6 +4,11 @@ React axios async/await를 활용한 News app
 
 
 ## 개발로그
+
+#### 2023-07-03
+- API로 실제 데이터 연동
+- 카테고리 UI 추가 
+
 #### 2023-07-02
 - create react app
 - npm install axios & styled-component
