@@ -1,8 +1,12 @@
-import { useState, useCallback } from 'react';
-import NewsList from 'components/NewsList';
-import Categories from 'components/Categories';
+import { Route, Routes } from "react-router-dom";
+import NewsPage from 'pages/NewsPage';
+
+// import { useState, useCallback } from 'react';
+// import NewsList from 'components/NewsList';
+// import Categories from 'components/Categories';
 // import axios from 'axios';
 
+// 첫 번째, 비동기로 news api 호출
 // const App = () => {
 //   const [data, setData] = useState(null); // data 초기값 null
 //   const onClick = async () => {
@@ -30,19 +34,31 @@ import Categories from 'components/Categories';
 //     </div>
 //   );
 // };
-
 // export default App;
 
+
+// 두 번째, newsList, newsItem js 만들고 호출
+// const App = () => {
+//   const [category, setCategory] = useState('all');
+//   const onSelect = useCallback(category => setCategory(category), []);
+
+//   return (
+//     <>
+//       <Categories category={category} onSelect={onSelect}/>
+//       <NewsList category={category}/>
+//     </>
+//   )
+// };
+// export default App;
+
+
+// 세 번째, react-router-dom 활용해서 화면 구성
 const App = () => {
-  const [category, setCategory] = useState('all');
-  const onSelect = useCallback(category => setCategory(category), []);
-
   return (
-    <>
-      <Categories category={category} onSelect={onSelect}/>
-      <NewsList category={category}/>
-    </>
-  )
-};
-
+    <Routes>
+      <Route path="/" element={<NewsPage />} />
+      <Route path="/:category" element={<NewsPage />} />
+    </Routes>
+  );
+}
 export default App;
