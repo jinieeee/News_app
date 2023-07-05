@@ -23,7 +23,7 @@ const NewsListBlock = styled.div`
 //     urlToImage: 'https://via.placeholder.com/160'
 // }
 
-const NewsList = () => {
+const NewsList = ({category}) => {
     const [articles, setArticles] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -32,7 +32,9 @@ const NewsList = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=' + process.env.REACT_APP_NEWS_API)
+                const query = category === 'all' ? '' : `&category=${category}`;
+                const apiKey = process.env.REACT_APP_NEWS_API;
+                const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${apiKey}`)
                 .then(response => {
                     setArticles(response.data.articles);
                 })
@@ -43,7 +45,7 @@ const NewsList = () => {
         };
 
         fetchData();
-    }, []);
+    }, [category]); // category가 변화하는 것  감지
 
     // 대기 중일 때
     if(loading) {
